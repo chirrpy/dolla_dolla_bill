@@ -29,6 +29,8 @@ Gem::Specification.new do |s|
   s.require_paths         = ["lib"]
   #= Manifest =#
 
+  s.add_dependency              'money',                '~> 5.0.0'
+
   s.add_development_dependency  'rspec',                '~> 2.11'
   s.add_development_dependency  'fuubar',               '~> 1.0'
   s.add_development_dependency  'guard',                '~> 1.4.0'
