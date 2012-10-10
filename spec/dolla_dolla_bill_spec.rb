@@ -72,6 +72,15 @@ describe DollaDollaBill do
         money.price_currency.should eql 'USD'
       end
     end
+
+    context 'when set to nil' do
+      before { money.price = nil }
+
+      it 'sets the attributes to nil' do
+        money.price_in_cents.should be_nil
+        money.price_currency.should be_nil
+      end
+    end
   end
 
   describe '.lowest_money' do

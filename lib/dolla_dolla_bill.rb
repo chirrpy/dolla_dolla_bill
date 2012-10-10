@@ -16,10 +16,17 @@ module DollaDollaBill
       end
 
       define_method("#{name}=") do |value|
-        value = value.to_money
+        if value.nil?
+          cents_value    = nil
+          currency_value = nil
+        else
+          value          = value.to_money
+          cents_value    = value.cents
+          currency_value = value.currency_as_string
+        end
 
-        send(cents_field_writer,    value.cents)
-        send(currency_field_writer, value.currency_as_string)
+        send(cents_field_writer,    cents_value)
+        send(currency_field_writer, currency_value)
       end
 
       self.class.send(:define_method, "lowest_#{name}") do
