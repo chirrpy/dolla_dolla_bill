@@ -84,6 +84,14 @@ describe DollaDollaBill do
   end
 
   describe '.lowest_money' do
+    context 'when there are no items' do
+      before { ExoticDancer.count.should be_zero }
+
+      it 'is nil' do
+        ExoticDancer.lowest_price.should be_nil
+      end
+    end
+
     context 'when there are two items with different amounts' do
       let!(:higher_money) { ExoticDancer.create( price_in_cents: 5433,
                                                  price_currency: 'GBP') }

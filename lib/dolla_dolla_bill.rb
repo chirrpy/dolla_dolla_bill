@@ -30,10 +30,11 @@ module DollaDollaBill
       end
 
       self.class.send(:define_method, "lowest_#{name}") do
-        select("#{cents_field_reader}, #{currency_field_reader}").
-        order("#{cents_field_reader} ASC").
-        first.
-        price
+        lowest =  select("#{cents_field_reader}, #{currency_field_reader}").
+                  order("#{cents_field_reader} ASC").
+                  first
+
+        lowest.nil? ? nil : lowest.price
       end
     end
   end
